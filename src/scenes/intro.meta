@@ -1,0 +1,38 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "show_switch",
+      "targetTime": 0.7668294777404254
+    },
+    {
+      "name": "turn_off_switch",
+      "targetTime": 2.2109645815659364
+    },
+    {
+      "name": "turn_on_switch",
+      "targetTime": 3.8051930336142763
+    },
+    {
+      "name": "morph_into_bit",
+      "targetTime": 5.24747265774158
+    },
+    {
+      "name": "toggle_bit",
+      "targetTime": 7.353979355751692
+    },
+    {
+      "name": "toggle_bit_2",
+      "targetTime": 9.972334900311129
+    },
+    {
+      "name": "transition_to_author",
+      "targetTime": 11.548574624641546
+    },
+    {
+      "name": "end",
+      "targetTime": 20.394445756402295
+    }
+  ],
+  "seed": 2146685459
+}
