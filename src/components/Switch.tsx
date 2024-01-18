@@ -3,6 +3,7 @@ import {
     Node,
     NodeProps,
     Rect,
+    Txt,
     colorSignal,
     initial,
     signal,
@@ -14,10 +15,13 @@ import {
     SignalValue,
     SimpleSignal,
     all,
+    chain,
     createRef,
     createSignal,
     easeInOutCubic,
+    sequence,
     tween,
+    waitFor,
   } from '@motion-canvas/core';
   
   export interface SwitchProps extends NodeProps {
@@ -85,5 +89,55 @@ import {
         }),
       );
       this.isOn = !this.isOn;
+    }
+
+    public *showWierd(duration: number) {
+      const questionMark = createRef<Txt>();
+      this.add(<Txt text={"?"} rotation={25} fill={"white"} fontSize={75} x={50} y={-50} opacity={0} ref={questionMark}/>)
+
+      yield* chain(
+        // move to the center and color orange
+        all(
+          tween(duration, value => {  
+            this.container().fill(
+              Color.lerp(this.isOn ? this.accent() : this.offColor, "orange", easeInOutCubic(value)),
+            );
+          }),
+    
+          tween(duration, value => {
+            const currentPos = this.indicator().position();
+    
+            this.indicatorPosition(
+              easeInOutCubic(value, currentPos.x, 0),
+            );
+          }),
+        ),
+        waitFor(0.5),
+        // animate a question mark appearing
+        all(
+          questionMark().opacity(1, 0.5),
+          questionMark().position({x: 100, y: -75}, 0.5, easeInOutCubic),
+        ),
+        // animate a question mark disappearing and the switch returning to normal
+        waitFor(1),
+        all(
+          questionMark().opacity(0, 0.5),
+          tween(duration, value => {  
+            this.container().fill(
+              Color.lerp("orange", this.isOn ? this.accent() : this.offColor, easeInOutCubic(value)),
+            );
+          }),
+    
+          tween(duration, value => {
+            const currentPos = this.indicator().position();
+    
+            this.indicatorPosition(
+              easeInOutCubic(value, currentPos.x, this.isOn ? 50 : -50),
+            )
+          }),
+        ),
+      );
+
+      questionMark().remove();
     }
   }

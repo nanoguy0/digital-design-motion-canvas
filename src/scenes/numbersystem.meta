@@ -1,0 +1,22 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "remove 2-9",
+      "targetTime": 1.25
+    },
+    {
+      "name": "highlight numbers",
+      "targetTime": 1.75
+    },
+    {
+      "name": "try equate",
+      "targetTime": 2.875
+    },
+    {
+      "name": "reveal values",
+      "targetTime": 3.725
+    }
+  ],
+  "seed": 915902464
+}

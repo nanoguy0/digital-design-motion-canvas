@@ -1,0 +1,42 @@
+{
+  "version": 0,
+  "timeEvents": [
+    {
+      "name": "show_switch",
+      "targetTime": 0
+    },
+    {
+      "name": "turn_off_switch",
+      "targetTime": 1
+    },
+    {
+      "name": "turn_on_switch",
+      "targetTime": 2
+    },
+    {
+      "name": "show_weird_switch",
+      "targetTime": 3
+    },
+    {
+      "name": "morph_into_bit",
+      "targetTime": 7
+    },
+    {
+      "name": "toggle_bit",
+      "targetTime": 8
+    },
+    {
+      "name": "toggle_bit_2",
+      "targetTime": 9
+    },
+    {
+      "name": "transition_to_author",
+      "targetTime": 10
+    },
+    {
+      "name": "end",
+      "targetTime": 15.5
+    }
+  ],
+  "seed": 273589399
+}
